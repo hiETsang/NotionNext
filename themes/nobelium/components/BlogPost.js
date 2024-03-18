@@ -1,10 +1,17 @@
 import Link from 'next/link'
 import LazyImage from '@/components/LazyImage'
 import { siteConfig } from '@/lib/config'
+import { checkContainHttp, sliceUrlFromHttp } from '@/lib/utils'
+import NotionIcon from '@/components/NotionIcon'
+import NotionPage from '@/components/NotionPage'
 
 const BlogPost = ({ post }) => {
+  const url = checkContainHttp(post.slug) ? sliceUrlFromHttp(post.slug) : `${siteConfig('SUB_PATH', '')}/${post.slug}`
+
+  const showPreview = siteConfig('POST_LIST_PREVIEW') && post.blockMap
+
   return (
-    (<Link href={`${siteConfig('SUB_PATH', '')}/${post.slug}`}>
+    (<Link href={url}>
       <article key={post.id} className="mb-6 md:mb-9 flex flex-row space-x-3 md:space-x-5">
         <div className="flex-none w-[100px] h-[100px] md:w-[120px] md:h-[120px] ">
           <LazyImage src={post?.pageCoverThumbnail} alt={post?.title} className='w-full h-full object-cover hover:brightness-75 transition-all duration-300' />

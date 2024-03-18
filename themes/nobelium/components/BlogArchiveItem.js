@@ -1,5 +1,6 @@
 import { siteConfig } from '@/lib/config'
 import Link from 'next/link'
+import { checkContainHttp, sliceUrlFromHttp } from '@/lib/utils'
 
 /**
  * 归档分组文章
@@ -10,8 +11,10 @@ export default function BlogArchiveItem({ archiveTitle, archivePosts }) {
   return (
         <div key={archiveTitle}>
             <ul>
-                {archivePosts[archiveTitle].map(post => (
-                    <li
+                {archivePosts[archiveTitle].map(post => {
+                  const url = checkContainHttp(post.slug) ? sliceUrlFromHttp(post.slug) : `${siteConfig('SUB_PATH', '')}/${post.slug}`
+
+                  return <li
                         key={post.id}
                         className="p-1 mt-0.5 text-base md:text-xl items-center"
                     >
@@ -21,7 +24,7 @@ export default function BlogArchiveItem({ archiveTitle, archivePosts }) {
                             </span>{' '}
                             &nbsp;
                             <Link
-                                href={`${siteConfig('SUB_PATH', '')}/${post.slug}`}
+                                href={url}
                                 passHref
                                 className="dark:text-gray-400  dark:hover:text-gray-300 overflow-x-hidden hover:underline cursor-pointer text-gray-600">
 
@@ -30,7 +33,7 @@ export default function BlogArchiveItem({ archiveTitle, archivePosts }) {
                             </Link>
                         </div>
                     </li>
-                ))}
+                })}
             </ul>
         </div>
   )

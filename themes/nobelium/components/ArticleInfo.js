@@ -3,6 +3,7 @@ import Image from 'next/image'
 import TagItem from './TagItem'
 import md5 from 'js-md5'
 import { siteConfig } from '@/lib/config'
+import NotionIcon from '@/components/NotionIcon'
 
 export const ArticleInfo = (props) => {
   const { post } = props
@@ -11,10 +12,9 @@ export const ArticleInfo = (props) => {
 
   return <section className="flex-wrap flex mt-2 text-sm text-gray-600 dark:text-gray-400 font-normal leading-8">
         <div>
-
-            <div className="font-semibold text-3xl text-black/95 dark:text-white/95">
+            <h1 className="font-semibold text-3xl text-black/95 dark:text-white/95">
                 {post?.title}
-            </div>
+            </h1>
 
             {post?.type !== 'Page' && <>
                 <nav className="flex mt-7 items-start text-black/25 dark:text-white/25">
