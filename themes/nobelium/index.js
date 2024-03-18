@@ -28,6 +28,7 @@ import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 
 const AlgoliaSearchModal = dynamic(() => import('@/components/AlgoliaSearchModal'), { ssr: false })
+const RecommendPosts = dynamic(() => import('./components/RecommendPosts'), { ssr: false })
 
 // 主题全局状态
 const ThemeGlobalNobelium = createContext()
@@ -200,7 +201,7 @@ const LayoutArchive = props => {
  * @returns
  */
 const LayoutSlug = props => {
-  const { post, lock, validPassword } = props
+  const { post, lock, validPassword, recommendPosts } = props
   const router = useRouter()
   useEffect(() => {
     // 404
@@ -231,7 +232,8 @@ const LayoutSlug = props => {
                     {post?.type !== 'Page' && <>
                     <div>
                     <Comment frontMatter={post} />
-                    <RecommendationModule />
+                    <RecommendPosts recommendPosts={recommendPosts}/>
+                    {/* <RecommendationModule /> */}
                     </div>
                     </>}
                     {/* <ArticleFooter /> */}
