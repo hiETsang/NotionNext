@@ -13,6 +13,9 @@ const RecommendBlog = ({ post }) => {
   return (
     (<Link href={url}>
       <article key={post.id} className="mb-3 md:mb-5 flex flex-row space-x-3 md:space-x-5">
+      <div className="flex-none w-[50px] h-[50px] md:w-[70px] md:h-[70px] ">
+          <LazyImage src={post?.pageCoverThumbnail} alt={post?.title} className='w-full h-full object-cover hover:brightness-75 transition-all duration-300' />
+        </div>
         <div className="flex flex-col">
           <header className="flex flex-col justify-between space-y-1">
             <time className="flex-shrink-0 text-[#00000033] dark:text-[#FFFFFF33] text-xs md:text-sm font-semibold uppercase">

@@ -13,9 +13,9 @@ const BlogPost = ({ post }) => {
   return (
     (<Link href={url}>
       <article key={post.id} className="mb-6 md:mb-9 flex flex-row space-x-3 md:space-x-5">
-        {/* <div className="flex-none w-[100px] h-[100px] md:w-[120px] md:h-[120px] ">
+        <div className="flex-none w-[100px] h-[100px] md:w-[120px] md:h-[120px] ">
           <LazyImage src={post?.pageCoverThumbnail} alt={post?.title} className='w-full h-full object-cover hover:brightness-75 transition-all duration-300' />
-        </div> */}
+        </div>
         <div className="flex flex-col">
           <header className="flex flex-col justify-between space-y-2">
             <time className="flex-shrink-0 text-[#00000033] dark:text-[#FFFFFF33] text-xs md:text-sm font-semibold uppercase">
