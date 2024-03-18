@@ -25,6 +25,7 @@ import replaceSearchResult from '@/components/Mark'
 import CommonHead from '@/components/CommonHead'
 import AlgoliaSearchModal from '@/components/AlgoliaSearchModal'
 import { siteConfig } from '@/lib/config'
+import RecommendationModule from './components/RecommendationModule'
 
 // 主题全局状态
 const ThemeGlobalNobelium = createContext()
@@ -45,7 +46,7 @@ const LayoutBase = props => {
 
   return (
         <ThemeGlobalNobelium.Provider value={{ searchModal }}>
-            <div id='theme-nobelium' className='nobelium relative dark:text-gray-300  w-full  bg-white dark:bg-black min-h-screen flex flex-col'>
+            <div id='theme-nobelium' className='nobelium antialiased relative dark:text-gray-300  w-full  bg-white dark:bg-[#2a2c31] min-h-screen flex flex-col'>
                 {/* SEO相关 */}
                 <CommonHead meta={meta} />
                 {/* SEO相关 */}
@@ -79,9 +80,9 @@ const LayoutBase = props => {
                 <Footer {...props} />
 
                 {/* 右下悬浮 */}
-                <div className='fixed right-4 bottom-4'>
+                {/* <div className='fixed right-4 bottom-4'>
                     <JumpToTopButton />
-                </div>
+                </div> */}
 
                 {/* 左下悬浮 */}
                 <div className="bottom-4 -left-14 fixed justify-end z-40">
@@ -131,7 +132,7 @@ const LayoutPostList = props => {
 
   return (
         <LayoutBase {...props} topSlot={<BlogListBar {...props} setFilterKey={setFilterKey} />}>
-            {topSlot}
+            {/* {topSlot} */}
             {siteConfig('POST_LIST_STYLE') === 'page' ? <BlogListPage {...props} posts={filteredBlogPosts} /> : <BlogListScroll {...props} posts={filteredBlogPosts} />}
         </LayoutBase>
   )
@@ -187,7 +188,7 @@ const LayoutArchive = props => {
   return (
         <LayoutBase {...props}>
             <div className="mb-10 pb-20 md:py-12 p-3  min-h-screen w-full">
-                {Object.keys(archivePosts).map(archiveTitle => <BlogArchiveItem key={archiveTitle} archiveTitle={archiveTitle} archivePosts={archivePosts} />)}
+                {Object.keys(archivePosts).reverse().map(archiveTitle => <BlogArchiveItem key={archiveTitle} archiveTitle={archiveTitle} archivePosts={archivePosts} />)}
             </div>
         </LayoutBase>
   )
@@ -199,7 +200,7 @@ const LayoutArchive = props => {
  * @returns
  */
 const LayoutSlug = props => {
-  const { post, lock, validPassword } = props
+  const { post, lock, validPassword} = props
 
   return (
         <LayoutBase {...props}>
@@ -211,8 +212,14 @@ const LayoutSlug = props => {
                     <ArticleInfo post={post} />
                     <NotionPage post={post} />
                     <ShareBar post={post} />
+                    <Announcement {...props} />
+                    {post?.type !== 'Page' && <>
+                    <div>
                     <Comment frontMatter={post} />
-                    <ArticleFooter />
+                    <RecommendationModule />
+                    </div>
+                    </>}
+                    {/* <ArticleFooter /> */}
                 </>
             </div>}
 
@@ -276,8 +283,8 @@ const LayoutTagIndex = (props) => {
                       return (
                             <div key={tag.name} className='p-2'>
                                 <Link key={tag} href={`/tag/${encodeURIComponent(tag.name)}`} passHref
-                                    className={`cursor-pointer inline-block rounded hover:bg-gray-500 hover:text-white duration-200 mr-2 py-1 px-2 text-xs whitespace-nowrap dark:hover:text-white text-gray-600 hover:shadow-xl dark:border-gray-400 notion-${tag.color}_background dark:bg-gray-800`}>
-                                    <div className='font-light dark:text-gray-400'><i className='mr-1 fas fa-tag' /> {tag.name + (tag.count ? `(${tag.count})` : '')} </div>
+                                    className={`cursor-pointer inline-block whitespace-nowrap rounded-full px-2 py-1 border-2 leading-none text-sm border-gray-300 dark:border-gray-500 hover:border-gray-600 hover:dark:border-gray-300 font-semibold text-gray-400 dark:text-gray-500 hover:text-gray-600 hover:dark:text-gray-300`}>
+                                    <div >{tag.name + (tag.count ? `(${tag.count})` : '')} </div>
                                 </Link>
                             </div>
                       )

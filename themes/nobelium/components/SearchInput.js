@@ -63,7 +63,7 @@ const SearchInput = props => {
     ref={searchInputRef}
     type='text'
     placeholder={tag ? `${locale.SEARCH.TAGS} #${tag}` : `${locale.SEARCH.ARTICLES}`}
-    className={'outline-none w-full text-sm pl-4 transition focus:shadow-lg font-light leading-10 text-black bg-gray-100 dark:bg-gray-900 dark:text-white'}
+    className={'outline-none w-full text-sm pl-4 transition focus:shadow-lg leading-10 text-black bg-gray-100 dark:bg-gray-900 dark:text-white'}
     onKeyUp={handleKeyUp}
     onCompositionStart={lockSearchInput}
     onCompositionUpdate={lockSearchInput}

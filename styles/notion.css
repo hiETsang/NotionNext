@@ -68,7 +68,7 @@
 }
 
 .notion {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.5;
   color: var(--fg-color);
   caret-color: var(--fg-color);
@@ -554,6 +554,8 @@ summary > .notion-h {
   margin: 6px 0;
   padding: 0;
   border-bottom-width: 1px;
+  @apply border-black/5;
+  @apply dark:border-white/5;
 }
 
 .notion-link {
@@ -1660,7 +1662,8 @@ code[class*='language-'] {
 /* NOTION CSS OVERRIDE */
 
 .notion {
-  @apply dark:text-gray-300;
+  @apply dark:text-white/80;
+  @apply text-black/80;
   overflow-wrap: break-word;
 }
 .notion,
@@ -1956,14 +1959,14 @@ svg + .notion-page-title-text {
 /* https://github.com/kchen0x */
 .notion-quote {
   display: block;
-  border-radius: 5px;
+  border-radius: 1px;
   border-color: var(--notion-blue);
   border-left-color: var(--notion-blue);
   background-color: var(--notion-blue_background_co);
   width: 100%;
   white-space: pre-wrap;
   word-break: break-word;
-  border-left: 10px solid;
+  border-left: 2px solid;
   padding: 0.2em 0.9em;
   margin: 6px 0;
   font-size: 1em;

@@ -9,18 +9,14 @@ import Link from 'next/link'
 export default function BlogArchiveItem({ archiveTitle, archivePosts }) {
   return (
         <div key={archiveTitle}>
-            <div id={archiveTitle} className="pt-16 pb-4 text-3xl dark:text-gray-300" >
-                {archiveTitle}
-            </div>
-
             <ul>
                 {archivePosts[archiveTitle].map(post => (
                     <li
                         key={post.id}
-                        className="border-l-2 p-1 text-xs md:text-base items-center  hover:scale-x-105 hover:border-gray-500 dark:hover:border-gray-300 dark:border-gray-400 transform duration-500"
+                        className="p-1 mt-0.5 text-base md:text-xl items-center"
                     >
                         <div id={post?.publishDay}>
-                            <span className="text-gray-400">
+                            <span className="text-black/25 dark:text-white/25 font-medium">
                                 {post.date?.start_date}
                             </span>{' '}
                             &nbsp;

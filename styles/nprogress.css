@@ -82,3 +82,8 @@
     transform: rotate(360deg);
   }
 }
+
+/* 隐藏掉进度 */
+#nprogress {
+  display: none !important;
+}

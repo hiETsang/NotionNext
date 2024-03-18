@@ -20,8 +20,8 @@ const DarkModeButton = (props) => {
     }
   })
 
-  return <div onClick={toggleDarkMode} className={`${className || ''} flex justify-center dark:text-gray-200 text-gray-800`}>
-        <div id='darkModeButton' className=' hover:scale-110 cursor-pointer transform duration-200 w-5 h-5'> {isDarkMode ? <Sun /> : <Moon />}</div>
+  return <div onClick={toggleDarkMode} className={`${className || ''} cursor-pointer hover:bg-black hover:bg-opacity-10 rounded-full w-10 h-10 flex justify-center items-center duration-200 transition-all`}>
+        <div id='darkModeButton' className=' text-[#00000094] dark:text-[#FFFFFF94] w-5 h -5'> {isDarkMode ? <Sun /> : <Moon />}</div>
     </div>
 }
 export default DarkModeButton

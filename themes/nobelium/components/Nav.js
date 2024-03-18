@@ -10,6 +10,7 @@ import LazyImage from '@/components/LazyImage'
 import RandomPostButton from './RandomPostButton'
 import SearchButton from './SearchButton'
 import { siteConfig } from '@/lib/config'
+import DarkModeButton from '@/components/DarkModeButton'
 
 const Nav = props => {
   const { navBarTitle, fullWidth, siteInfo } = props
@@ -45,10 +46,10 @@ const Nav = props => {
             <div className="flex items-center">
                 <Link href="/" aria-label={siteConfig('TITLE')}>
 
-                    <div className="h-6 w-6">
+                    <div className="h-8 w-8">
                         {/* <SvgIcon/> */}
                         {siteConfig('NOBELIUM_NAV_NOTION_ICON', null, CONFIG)
-                          ? <LazyImage src={siteInfo?.icon} width={24} height={24} alt={siteConfig('AUTHOR')} />
+                          ? <LazyImage src={siteInfo?.icon} width={32} height={32} alt={siteConfig('AUTHOR')} />
                           : <SvgIcon />}
 
                     </div>
@@ -56,12 +57,12 @@ const Nav = props => {
                 </Link>
                 {navBarTitle
                   ? (
-                        <p className="ml-2 font-medium text-gray-800 dark:text-gray-300 header-name">
+                        <p className="ml-2 text-2xl	font-semibold text-[#000000f0] dark:text-[#FFFFFFf0] header-name">
                             {navBarTitle}
                         </p>
                     )
                   : (
-                        <p className="ml-2 font-medium text-gray-800 dark:text-gray-300 header-name whitespace-nowrap">
+                        <p className="ml-3 text-lg font-normal whitespace-nowrap">
                             {siteConfig('TITLE')}
                             {/* ,{' '}<span className="font-normal">{siteConfig('DESCRIPTION')}</span> */}
                         </p>
@@ -108,7 +109,7 @@ const NavBar = props => {
             </ul>
             <div className='md:hidden'>
                 <Collapse collapseRef={collapseRef} isOpen={isOpen} type='vertical' className='fixed top-16 right-6'>
-                    <div className='dark:border-black bg-white dark:bg-black rounded border p-2 text-sm'>
+                    <div className='bg-white dark:bg-hexo-black-gray dark:border-hexo-black-gray rounded border p-2 text-sm'>
                         {links?.map(link => <MenuItemCollapse key={link?.id} link={link} onHeightChange={(param) => collapseRef.current?.updateCollapseHeight(param)}/>)}
                     </div>
                 </Collapse>
@@ -116,7 +117,8 @@ const NavBar = props => {
 
             {JSON.parse(siteConfig('NOBELIUM_MENU_RANDOM_POST', null, CONFIG)) && <RandomPostButton {...props} />}
             {JSON.parse(siteConfig('NOBELIUM_MENU_SEARCH_BUTTON', null, CONFIG)) && <SearchButton {...props}/>}
-            <i onClick={toggleOpen} className='fas fa-bars cursor-pointer px-5 flex justify-center items-center md:hidden'></i>
+            <DarkModeButton className='text-center py-4'/>
+            <i onClick={toggleOpen} className='fas fa-bars cursor-pointer px-5 flex justify-center items-center text-[#00000094] dark:text-[#FFFFFF94] md:hidden'></i>
         </div>
   )
 }

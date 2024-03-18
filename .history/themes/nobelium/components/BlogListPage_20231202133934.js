@@ -22,11 +22,11 @@ export const BlogListPage = props => {
                 {posts?.map((post, index) => (
                     <div>
                         <BlogPost post={post} />
-                        {index !== posts.length - 1 && <hr className="my-6 border-black/5 dark:border-white/5" />}
+                        {index !== posts.length - 1 && <hr className="my-4 border-b border-gray-200 dark:border-gray-700" />}
                     </div>
                 ))}
             </div>
-            <div className="flex justify-between text-base font-medium text-[#000000f0] dark:text-[#fffffff0] ">
+            <div className="flex justify-between text-xs">
                 <Link
                     href={{ pathname: currentPage - 1 === 1 ? `${pagePrefix}/` : `${pagePrefix}/page/${currentPage - 1}`, query: router.query.s ? { s: router.query.s } : {} }}
                     className={`${showPrev ? '  ' : ' invisible block pointer-events-none '}no-underline py-2 px-3 rounded`}>

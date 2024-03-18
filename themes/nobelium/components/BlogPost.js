@@ -1,24 +1,29 @@
 import Link from 'next/link'
+import LazyImage from '@/components/LazyImage'
 import { siteConfig } from '@/lib/config'
 
 const BlogPost = ({ post }) => {
   return (
     (<Link href={`${siteConfig('SUB_PATH', '')}/${post.slug}`}>
-
-      <article key={post.id} className="mb-6 md:mb-8">
-        <header className="flex flex-col justify-between md:flex-row md:items-baseline">
-          <h2 className="text-lg md:text-xl font-medium mb-2 cursor-pointer text-black dark:text-gray-100">
-            {post.title}
-          </h2>
-          <time className="flex-shrink-0 text-gray-600 dark:text-gray-400">
-            {post?.publishDay}
-          </time>
-        </header>
-        <main>
-          <p className="hidden md:block leading-8 text-gray-700 dark:text-gray-300">
-            {post.summary}
-          </p>
-        </main>
+      <article key={post.id} className="mb-6 md:mb-9 flex flex-row space-x-3 md:space-x-5">
+        <div className="flex-none w-[100px] h-[100px] md:w-[120px] md:h-[120px] ">
+          <LazyImage src={post?.pageCoverThumbnail} alt={post?.title} className='w-full h-full object-cover hover:brightness-75 transition-all duration-300' />
+        </div>
+        <div className="flex flex-col">
+          <header className="flex flex-col justify-between space-y-2">
+            <time className="flex-shrink-0 text-[#00000033] dark:text-[#FFFFFF33] text-xs md:text-sm font-semibold uppercase">
+              {post?.publishDay}
+            </time>
+            <h2 className="transition text-xl md:text-2xl font-medium mb-2 cursor-pointer text-[#000000F0] hover:text-[#D0CDC2] dark:text-[#FFFFFFF0] dark:hover:text-gray-400">
+              {post.title}
+            </h2>
+          </header>
+          <main>
+            <p className="mt-[10px] text-xl md:text-lg text-[#00000094] dark:text-[#FFFFFF94]">
+              {post.summary}
+            </p>
+          </main>
+        </div>
       </article>
 
     </Link>)

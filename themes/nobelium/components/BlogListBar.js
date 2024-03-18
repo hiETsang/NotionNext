@@ -13,7 +13,7 @@ export default function BlogListBar(props) {
                     placeholder={
                         tag ? `Search in #${tag}` : 'Search Articles'
                     }
-                    className="outline-none block w-full border px-4 py-2 border-black bg-white text-black dark:bg-night dark:border-white dark:text-white"
+                    className="outline-none block w-full border px-4 py-2 rounded-lg border-black/80 bg-white text-black dark:bg-black/80 dark:border-white/30 dark:text-white"
                     onChange={e => handleSearchChange(e.target.value)}
                 />
                 <svg

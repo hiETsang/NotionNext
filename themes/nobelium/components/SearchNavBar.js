@@ -8,7 +8,7 @@ import Tags from './Tags'
  */
 export default function SearchNavBar(props) {
   return (<>
-    <div className='pb-12'>
+    <div>
         <SearchInput {...props} />
     </div>
 
