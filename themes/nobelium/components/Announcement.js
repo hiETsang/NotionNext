@@ -38,8 +38,8 @@ const Announcement = ({ notice, className }) => {
             <div id="announcement-content">
               <div className="flex flex-col gap-3 justify-center items-center">
                 <div className="my-5 bg-gray-200 dark:bg-gray-600 w-20 h-1"></div>
-                <div className="text-[#000000CC] dark:text-[#ffffffcc] text-[18px]">欢迎订阅我，及时获取一个普通人视角下的独立观察和真诚输出。</div>
-                <div id="custom-substack-embed"></div>
+                {/* <div className="text-[#000000CC] dark:text-[#ffffffcc] text-[18px]">欢迎订阅我，及时获取一个普通人视角下的独立观察和真诚输出。</div>
+                <div id="custom-substack-embed"></div> */}
               </div>
               <NotionPage post={notice} className='' />
               <div className="flex justify-center items-center">
