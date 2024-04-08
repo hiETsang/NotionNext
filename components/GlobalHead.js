@@ -50,6 +50,7 @@ const GlobalHead = props => {
       <meta name='twitter:card' content='summary_large_image' />
       <meta name='twitter:description' content={description} />
       <meta name='twitter:title' content={title} />
+      <script defer src="https://analytics.us.umami.is/script.js" data-website-id="98ae7c1b-005c-419e-ae7d-e2ec4539200b"></script>
 
       {siteConfig('COMMENT_WEBMENTION_ENABLE') && (
         <>
